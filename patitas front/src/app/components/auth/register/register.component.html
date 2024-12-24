@@ -1,0 +1,52 @@
+<form [formGroup]="registerForm" class="form" (submit)="sendForm(registerForm)">
+  <fieldset>
+    <legend>Registrarse</legend>
+    <!--  -->
+    <figure class="load-image">
+      <img id="image-perfil" [src]="image_perfil" alt="Cargar Image de Perfil">
+      <input id="file-image" type="file" (change)="loadedFile($event)">
+    </figure>
+    <!--  -->
+    <input placeholder="Nombres" formControlName="name">
+    @if(name?.invalid && name?.touched){
+    <span class="msg-error">Por favor, Introduce tus Nombres</span>
+    }
+    <!--  -->
+    <input placeholder="Apellidos" formControlName="lastname">
+    @if(lastname?.invalid && lastname?.touched){
+    <span class="msg-error">Por favor, Introduce tus Apellidos</span>
+    }
+    <!--  -->
+    <input type="email" placeholder="Correo" formControlName="email">
+    @if(email?.hasError('required') && email?.touched){
+    <span class="msg-error">Por favor, Introduce tu Correo</span>
+    }@else if(email?.hasError('email') && email?.touched){
+    <span class="msg-error">Por favor, Introduce un Correo Valido</span>
+
+    }
+    <!--  -->
+    <input type="password" placeholder="Contraseña" formControlName="password">
+    @if(password?.invalid && password?.touched){
+    <span class="msg-error">Contraseña Obligatoria</span>
+    }
+    <input type="password" placeholder="Repetir Contraseña" formControlName="repeatPassword">
+    @if(repeatPassword?.value !== password?.value && repeatPassword?.touched){
+    <span class="msg-error">Las Contraseñas no coinciden</span>
+    }
+    <!--  -->
+    <input placeholder="DNI" formControlName="dni">
+    @if(dni?.invalid && dni?.touched){
+    <span class="msg-error">DNI Obligatorio</span>
+    }
+    <!--  -->
+    <input placeholder="Descripcion" formControlName="description">
+    <!--  -->
+    <input placeholder="Url Red Social" formControlName="web">
+    <!--  -->
+    <label for="termsAndConditions" class="termsAndConditions">
+      <input type="checkbox" id="termsAndConditions" formControlName="termsAndConditions">
+      Aceptar Terminos Y Condiciones</label>
+    <!--  -->
+    <button type="submit" [disabled]="registerForm.invalid">Enviar</button>
+  </fieldset>
+</form>

@@ -1,0 +1,109 @@
+/* Formulario */
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+
+  min-height: 90vh;
+  width: 50%;
+  max-width: 1024px;
+  margin: 3rem auto;
+}
+
+/* Fieldset */
+.form fieldset {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-flow: column nowrap;
+  border: medium solid black;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  row-gap: 1.5rem;
+
+  align-items: center;
+}
+
+/* Legend */
+.form legend {
+  text-align: center;
+  padding: 0 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* Inputs */
+.form input:not([type="checkbox"]) {
+  padding: 0.8rem;
+  border: thin solid black;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  width: 90%;
+}
+
+/* Boton de envio */
+button[type="submit"] {
+  padding: 1rem;
+  background-color: #5482f6;
+  color: black;
+  font-weight: bold;
+  border-radius: 1rem;
+  width: 50%;
+  margin: 40px auto;
+  border: thin solid white;
+  cursor: pointer;
+}
+.form button:hover:not(:disabled) {
+  background-color: #5482f6;
+  opacity: 0.8;
+}
+
+/* Imagen de Perfil */
+.load-image {
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin: 1rem 0;
+  width: 200px;
+  height: 200px;
+  border: solid 3px #5482f6;
+  border-radius: 50%;
+}
+
+.load-image input {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.load-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* Mensage de Error */
+.msg-error {
+  display: block;
+  margin-top: -2.5rem;
+  text-align: left;
+  padding-left: 20px;
+  color: #a60800;
+  font-size: 16px;
+  width: 90%;
+}
+
+/* Terminos y condiciones */
+.termsAndConditions {
+  font-weight: bold;
+  width: 90%;
+  cursor: pointer;
+}
+.termsAndConditions input {
+  margin: 0 .5rem;
+}

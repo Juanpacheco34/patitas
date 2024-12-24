@@ -1,0 +1,41 @@
+.nav-bar {
+  position: sticky;
+  top: 0;
+  background-color: #5482f6;
+  /* background-color: #545d72; */
+  height: 7vh;
+  padding: 0 1rem;
+  z-index: 999;
+}
+
+.nav-bar ul {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  justify-content: space-between;
+}
+
+.nav-bar li {
+  display: inline-block;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+.login-register li {
+  border: thin solid white;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.nav-bar a {
+  text-decoration: none;
+
+}
+
+/* Imagen Nav Bar */
+.logo-home{
+  width: 90%;
+  height: 6vh;
+  cursor: pointer;
+}

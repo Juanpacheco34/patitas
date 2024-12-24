@@ -1,0 +1,46 @@
+.main {
+  max-height: 90vh;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.main section {
+  width: 30%;
+}
+
+.main article {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.main .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 20px;
+}
+
+.buttons button {
+  padding: 0.5rem;
+  border: thin solid black;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  flex-grow: 1;
+}
+
+.buttons button:hover {
+  background-color: #5482f6;
+}
+
+.main figure {
+  height: 90vh;
+  width: 50%;
+}
+
+.main img {
+  height: inherit;
+  width: 100%;
+}

@@ -1,0 +1,24 @@
+<form [formGroup]="formLogin" class="form" (submit)="sendForm()">
+
+  <figure class="logo">
+    <img src="assets/img/logo.svg" alt="Logo">
+  </figure>
+
+  <fieldset>
+    <legend>Iniciar Sesion</legend>
+    <!--  -->
+    <input type="email" placeholder="Correo" formControlName="email">
+    @if (formLogin.get("email")?.invalid && formLogin.get("email")?.touched) {
+    <span class="msg-error">Por favor, introduce un correo válido.</span>
+    }
+    <!--  -->
+    <input type="password" placeholder="Contraseña" formControlName="password">
+    @if (password?.hasError("required") && password?.touched) {
+    <span class="msg-error">Por favor, introduce una constraseña. </span>
+    }
+    <!--  -->
+    <button type="submit" [disabled]="formLogin.invalid">Iniciar Sesion</button>
+  </fieldset>
+
+
+</form>
