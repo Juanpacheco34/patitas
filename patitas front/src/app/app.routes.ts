@@ -30,4 +30,11 @@ export const routes: Routes = [
         (c) => c.RegisterComponent
       ),
   },
+  {
+    path: 'patitas',
+    loadComponent: () =>
+      import('./components/pages/patitas/patitas.component').then(
+        (c) => c.PatitasComponent
+      ),
+  },
 ];

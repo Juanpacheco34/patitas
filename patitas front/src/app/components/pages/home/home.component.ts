@@ -1,6 +1,8 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,10 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
-  constructor(private router: Router) {}
+export class HomeComponent  {
+  
+  constructor(private router: Router) { }
+
 
   onLogin() {
     this.router.navigateByUrl('/login');

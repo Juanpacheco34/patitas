@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-patitas',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './patitas.component.html',
   styleUrl: './patitas.component.css'
 })

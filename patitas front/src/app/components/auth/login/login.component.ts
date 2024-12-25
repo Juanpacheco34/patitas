@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.compose([Validators.email, Validators.required])],
       password: ['', Validators.required],
     });
+
   }
 
   get email() {
