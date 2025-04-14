@@ -1,5 +1,6 @@
 package com.jpach.patitas.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,23 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jpach.patitas.models.Posts;
 import com.jpach.patitas.services.PostServices;
 
-import jakarta.validation.Valid;
-
+//Controlador para manejar los post(publicaciones) de la webapp
 @RestController
 public class PostController {
 
-  @Autowired
-  private PostServices ps;
+    @Autowired
+    private PostServices postServices;
 
-  @GetMapping(path = "/allPost")
-  public ResponseEntity<?> getAllPosts() {
-    return ps.getAllPostSerices();
-  }
+    // Retornamos todos los post disponibles por el usuario
+    @GetMapping(path = "/allPost")
+    public ResponseEntity<?> getAllPosts() {
+        return postServices.getAllPosts();
+    }
 
-  @PostMapping("/new-post")
-  public ResponseEntity<?> creatPost(@RequestBody Posts post) {
-
-    return ps.savePost(post);
-  }
+    // Guardamos la publicacion insertada por el usuario
+    @PostMapping("/new-post")
+    public ResponseEntity<?> creatPost(@Valid @RequestBody Posts post) {
+        return postServices.savePost(post);
+    }
 
 }

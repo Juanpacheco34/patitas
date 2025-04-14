@@ -17,74 +17,74 @@ import java.util.function.Function;
 @Slf4j
 @Component
 public class JWTUtils {
-  @Value("${jwt.secret.key}")
-  private String secretKey;
-  @Value("${jwt.time.expiration}")
-  private String timeExpiration;
+    @Value("${jwt.secret.key}")
+    private String secretKey;
+    @Value("${jwt.time.expiration}")
+    private String timeExpiration;
 
-  // Generamos el token
-  public String generateToken(String username) {
+    // Generamos el token
+    public String generateToken(String username) {
 
-    // builder() genera
-    return Jwts.builder()
-        .setSubject(username)
-        .setIssuedAt(new Date(System.currentTimeMillis())) // Fecha de creacion del token
-        .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(timeExpiration)))
-        .signWith(getKey(), SignatureAlgorithm.HS256) // Firma del metodo
-        .compact();
-  }
-
-  // Obtenemos la firma del token
-  public Key getKey() {
-
-    // Decodificamos la clave y la volvemos a encriptar en bytes
-    byte[] keyBytes = Decoders.BASE64.decode(secretKey);
-    // Generamos la clave en HMAC para firmar el token
-    return Keys.hmacShaKeyFor(keyBytes);
-  }
-
-  // Validamos el token
-  public boolean isTokenValid(String token) {
-
-    try {
-
-      // parseBuilder() verifica
-      Jwts.parserBuilder()
-          .setSigningKey(getKey())
-          .build()
-          .parseClaimsJws(token)
-          .getBody();
-
-      return true;
-
-    } catch (Exception e) {
-      log.error(token, e.getMessage());
-
-      return false;
+        // builder() genera
+        return Jwts.builder()
+            .setSubject(username)
+            .setIssuedAt(new Date(System.currentTimeMillis())) // Fecha de creacion del token
+            .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(timeExpiration))) // Tiempo de expiracion del token
+            .signWith(getKey(), SignatureAlgorithm.HS256) // Firmamos el token con HS256
+            .compact();
     }
 
-  }
+    // Obtenemos la firma del token
+    public Key getKey() {
 
-  // Obtenemos todos los claims que comforman el token
-  public Claims getClaimsToken(String token) {
+        // Decodificamos la clave y la volvemos a encriptar en bytes
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        // Generamos la clave en HMAC para firmar el token
+        return Keys.hmacShaKeyFor(keyBytes);
+    }
 
-    return Jwts.parserBuilder()
-        .setSigningKey(getKey())
-        .build()
-        .parseClaimsJws(token)
-        .getBody();
+    // Validamos que el token sea valido
+    @SuppressWarnings("UseSpecificCatch")
+    public boolean isTokenValid(String token) {
 
-  }
-  
-  // Obtenemos un claims en especifico
-  public <T> T getClaim(String token, Function<Claims, T> claimsFuntion) {
-    Claims claims = getClaimsToken(token);
-    return claimsFuntion.apply(claims);
-  }
+        try {
 
-  // conseguimos el username del claim  con las funciones getClaimsToken y getClaim
-  public String ClaimUsernameFromToken(String token) {
-    return getClaim(token, Claims::getSubject);
-  }
+            Jwts.parserBuilder()
+                .setSigningKey(getKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+            return true;
+
+        } catch (Exception e) {
+            log.error(token, e.getMessage());
+
+            return false;
+        }
+
+    }
+
+    // Obtenemos todos los claims que comforman el token
+    public Claims getClaimsToken(String token) {
+
+        return Jwts.parserBuilder()
+            .setSigningKey(getKey())
+            .build()
+            .parseClaimsJws(token)
+            .getBody();
+
+    }
+
+    // Obtenemos un claims en especifico
+    public <T> T getClaim(String token, Function<Claims, T> claimsFuntion) {
+        Claims claims = getClaimsToken(token);
+        return claimsFuntion.apply(claims);
+    }
+
+    // Retornamos el username del claim  con las funciones getClaimsToken y getClaim
+    public String claimUsernameFromToken(String token) {
+        return getClaim(token, Claims::getSubject);
+    }
 
 }

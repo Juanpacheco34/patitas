@@ -2,10 +2,9 @@
   position: sticky;
   top: 0;
   background-color: #5482f6;
-  /* background-color: #545d72; */
-  height: 7vh;
+  height: 10vh;
   padding: 0 1rem;
-  z-index: 999;
+  z-index: 999;;
 }
 
 .nav-bar ul {
@@ -14,6 +13,7 @@
   align-items: center;
   padding: 0 30px;
   justify-content: space-between;
+  margin: 0;
 }
 
 .nav-bar li {
@@ -23,19 +23,23 @@
 }
 
 .login-register li {
-  border: thin solid white;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
+  border: medium solid white;
+  border-radius: 0.5rem;
 }
 
 .nav-bar a {
   text-decoration: none;
+  display: block;
+  width: inherit;
+    padding: 0.9rem;
+  height: inherit;
 
 }
 
-/* Imagen Nav Bar */
+/* logo*/
 .logo-home{
   width: 90%;
   height: 6vh;
   cursor: pointer;
 }
+

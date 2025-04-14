@@ -1,23 +1,24 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PatitaUser } from '../../interfaces/patita-user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  http = inject(HttpClient);
   private url: string = 'http://localhost:8080';
-
-  constructor(private hc: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
-    return this.hc.post(`${this.url}/login`, body);
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+
+    return this.http.post(`${this.url}/login`, body, { headers });
   }
-  register(data: Object): Observable<any> {
-    console.log(data)
-    return this.hc.post(`${this.url}/register`, data, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    });
+  register(data: PatitaUser): Observable<PatitaUser> {
+    return this.http.post<PatitaUser>(`${this.url}/register`, data);
   }
 }

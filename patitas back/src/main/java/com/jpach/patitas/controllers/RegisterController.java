@@ -29,12 +29,9 @@ public class RegisterController {
 
             // Encriptamos la password del usuario
             user.setPassword(PE.encode(user.getPassword()));
-
-
             // El metodo save devuelve un objeto ResponseEntity
             return US.save(user);
-
-
+            
         } catch (Exception e) {
 
             // En caso de alguna exception

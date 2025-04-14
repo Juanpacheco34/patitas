@@ -1,4 +1,6 @@
-@if(currentPath !== "/patitas"){
-<nav-bar></nav-bar>
+@if (visibleBar) {
+  <nav-bar></nav-bar>
 }
-<router-outlet></router-outlet>
+<main>
+  <router-outlet/>
+</main>

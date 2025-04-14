@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
+
+
   formLogin: FormGroup = new FormGroup({});
-  // pattern: RegExp = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&.*])(?=.{8,})/;
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +31,6 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.compose([Validators.email, Validators.required])],
       password: ['', Validators.required],
     });
-
   }
 
   get email() {

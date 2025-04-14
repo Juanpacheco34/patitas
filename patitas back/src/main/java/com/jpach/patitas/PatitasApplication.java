@@ -13,22 +13,4 @@ public class PatitasApplication {
         SpringApplication.run(PatitasApplication.class, args);
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(@SuppressWarnings("null") CorsRegistry registry) {
-                // Aplica CORS a todas las rutas
-                registry.addMapping("/**")
-                        // Permite solicitudes desde este origen
-                        .allowedOrigins("http://localhost:4200")
-                        // Métodos permitidos
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        // Duración de la configuración en caché
-                        .maxAge(3600)
-                        // Permite el uso de cookies, si es necesario
-                        .allowCredentials(true);
-            }
-        };
-    }
 }

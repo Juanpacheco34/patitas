@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "jwt.secret.key",
+    "type": "java.lang.String",
+    "description": "SHA256 para la firma del token"
+  },
+  {
+    "name": "jwt.time.expiration",
+    "type": "java.lang.String",
+    "description": "Tiempo de expiración del token"
+  }
+]}

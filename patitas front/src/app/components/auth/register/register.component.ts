@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,13 +7,14 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../../services/auth/auth.service';
 import { CloudinaryService } from '../../../services/cloudinary/cloudinary.service';
+import { PatitaUser } from '../../../interfaces/patita-user';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
   image_perfil: string = 'assets/img/load-image.svg';
@@ -100,24 +101,29 @@ export class RegisterComponent implements OnInit {
   }
 
   sendForm(registerForm: FormGroup): void {
+    const register: PatitaUser = registerForm.value;
+
     if (this.file && registerForm.valid) {
       this.cloudinary.uploadImage(this.file).subscribe({
         next: (res) => {
           if (res.secure_url) {
-            console.log(registerForm.value);
             registerForm.get('picture')?.setValue(res.secure_url);
-            this.auth.register(registerForm.value).subscribe({
-              next: (res) => {},
-              error: (err) => {},
-            });
+
+            // this.auth.register(register).subscribe({
+            //   next: (res) => { },
+
+            //   error: (err) => {},
+            // });
           }
         },
         error: (err) =>
           console.log('Error al cargar la imagen', err.error.message),
       });
     } else if (registerForm.valid && !this.file) {
-      this.auth.register(registerForm).subscribe({
-        next: (res) => {},
+      this.auth.register(register).subscribe({
+        next: (res) => {
+          console.log('Exito en el registro', res);
+        },
         error: (err) => {},
       });
     } else {

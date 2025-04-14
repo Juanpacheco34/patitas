@@ -2,11 +2,10 @@
 .form {
   display: flex;
   flex-flow: column nowrap;
-
   min-height: 90vh;
   width: 50%;
   max-width: 1024px;
-  margin: 3rem auto;
+  margin: 1rem auto;
 }
 
 /* Fieldset */

@@ -1,19 +1,10 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/auth/login/login.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'home',
-  },
-
-  {
     path: 'home',
     loadComponent: () =>
-      import('./components/pages/home/home.component').then(
-        (c) => c.HomeComponent
-      ),
+      import('./pages/home/home.component').then((c) => c.HomeComponent),
   },
 
   {
@@ -33,8 +24,17 @@ export const routes: Routes = [
   {
     path: 'patitas',
     loadComponent: () =>
-      import('./components/pages/patitas/patitas.component').then(
+      import('./pages/patitas/patitas.component').then(
         (c) => c.PatitasComponent
       ),
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./components/dashboard/dashboard.component').then(c => c.DashboardComponent)
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'home',
   },
 ];

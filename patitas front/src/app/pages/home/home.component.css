@@ -1,5 +1,5 @@
 .main {
-  max-height: 90vh;
+  max-height:99vh;
   display: flex;
   margin: 0 auto;
   align-items: center;
@@ -36,7 +36,7 @@
 }
 
 .main figure {
-  height: 90vh;
+  height: 100vh;
   width: 50%;
 }
 

@@ -1,0 +1,16 @@
+.container {
+  width: 630px;
+  margin: 0 auto;
+  height: 100vh;
+  border: thin solid black;
+  padding: 2rem;
+}
+
+.container-post {
+  width: 90%;
+  height: 70vh;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  border: medium solid black;
+  border-radius: 0.6rem;
+}
