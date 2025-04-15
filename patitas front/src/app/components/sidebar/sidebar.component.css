@@ -1,0 +1,39 @@
+.sidebar {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  top: 0;
+
+  width: 20rem;
+  height: 100vh;
+  background-color: #5482f6;
+}
+
+.sidebar div{
+margin-top: 1rem;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  list-style: none;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: black;
+  font-weight: bold;
+  gap: 1rem;
+}

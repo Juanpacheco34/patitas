@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  gap: 4rem;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.container-post {
+  position: relative;
+  width: 30rem;
+  min-width: 30rem;
+  height: 80vh;
+  margin: 1rem auto;
+}
+
+.container-post figure {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.container-post img {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 0.6rem;
+  object-fit: fill;
+}
+
+.container-tools,
+.container-description {
+  position: absolute;
+  border: thick solid black;
+  border-radius: 0.6rem;
+}
+
+/* Caja tools */
+.container-tools {
+  right: 0.5rem;
+  bottom: 0.5rem;
+  width: 5rem;
+  height: 40vh;
+}
+
+.container-tools ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container-tools li {
+  width: 50%;
+  height: calc(40vh / 4);
+  list-style: none;
+  cursor: pointer;
+}
+
+/* Caja description */
+.container-description {
+  width: 22rem;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  min-height: 15vh;
+}
